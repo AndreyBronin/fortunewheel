@@ -55,8 +55,9 @@ class GameViewController: NSViewController {
             -1.0, 0.0, 0.0, 1.0
         )))
 
-        rotateAction = SCNAction.rotateBy(x: 0, y: 0, z: -5, duration: 5)
-        wheel.runAction(SCNAction.repeatForever(rotateAction))
+        rotateAction = SCNAction.rotateBy(x: 0, y: 0, z: -5, duration: Double.random(in: 4...7))
+        //wheel.runAction(SCNAction.repeatForever(rotateAction))
+        //wheel.runAction(rotateAction)
 
         
         // retrieve the SCNView
@@ -95,14 +96,38 @@ class GameViewController: NSViewController {
             let result = hitResults[0]
             
             if result.node.name == "wheelPart" {
-                rotateAction.duration = Double.random(in: 0.5...4.1)
+                rotateAction.duration = Double.random(in: 4...7)
+                //rotateAction.speed = CGFloat.random(in: 0.5...2.5)
                 wheel.removeAllActions()
-                wheel.runAction(SCNAction.repeatForever(rotateAction))
+                wheel.runAction( rotateAction, forKey: "spin", completionHandler: spinHandler)
 
             }
             if result.node.name == "arrow" {
-                wheel.removeAllActions()
+                spinHandler()
             }
         }
+    }
+    
+    func spinHandler() {
+        wheel.removeAllActions()
+        
+        print("The Section is: ", getSectionName())
+    }
+    
+    // TODO: fix me
+    func getSectionName() -> String {
+        var halfSections: [String] = ["PROFIT", "LOSS", "GAIN", "PROFIT", "EXPAND", "WIN", "Capital", "BORROW"]
+        let zAngle = wheel.rotation.z
+        
+        // 22 degree is one section
+        //var section: Int = 0
+        let section = rad2deg(zAngle)
+        debugPrint(section)
+        
+        return halfSections[0]
+    }
+    
+    func rad2deg(_ number: CGFloat) -> CGFloat {
+        return number * 180 / .pi
     }
 }
