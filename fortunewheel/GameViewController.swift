@@ -53,9 +53,6 @@ class GameViewController: NSViewController {
         )))
 
         
-        // animate the 3d object
-        wheel.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 0, z: 5, duration: 10)))
-        
         // retrieve the SCNView
         let scnView = self.view as! SCNView
         
@@ -91,26 +88,9 @@ class GameViewController: NSViewController {
             // retrieved the first clicked object
             let result = hitResults[0]
             
-            // get its material
-            let material = result.node.geometry!.firstMaterial!
-            
-            // highlight it
-            SCNTransaction.begin()
-            SCNTransaction.animationDuration = 0.5
-            
-            // on completion - unhighlight
-            SCNTransaction.completionBlock = {
-                SCNTransaction.begin()
-                SCNTransaction.animationDuration = 0.5
-                
-                material.emission.contents = NSColor.black
-                
-                SCNTransaction.commit()
+            if result.node.name == "wheelPart" {
+                result.node.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 0, z: 5, duration: 10)))
             }
-            
-            material.emission.contents = NSColor.red
-            
-            SCNTransaction.commit()
         }
     }
 }
