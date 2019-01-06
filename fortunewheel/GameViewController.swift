@@ -44,6 +44,15 @@ class GameViewController: NSViewController {
         // retrieve the ship node
         let wheel = scene.rootNode.childNode(withName: "wheelPart", recursively: true)!
         
+        
+        wheel.geometry?.material(named: "wheel")?.diffuse.contentsTransform = SCNMatrix4FromGLKMatrix4(GLKMatrix4(m: (
+            -1.0, 0.0, 0.0, 0.0,
+            0.0, 1.0, 0.0, 0.0,
+            0.0, 0.0, 1.0, 0.0,
+            -1.0, 0.0, 0.0, 1.0
+        )))
+
+        
         // animate the 3d object
         wheel.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 0, z: 5, duration: 10)))
         
