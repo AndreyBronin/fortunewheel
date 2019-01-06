@@ -44,13 +44,15 @@ class GameViewController: NSViewController {
         // retrieve the ship node
         let wheel = scene.rootNode.childNode(withName: "wheelPart", recursively: true)!
         
-        
+        // flip wheel texture
         wheel.geometry?.material(named: "wheel")?.diffuse.contentsTransform = SCNMatrix4FromGLKMatrix4(GLKMatrix4(m: (
             -1.0, 0.0, 0.0, 0.0,
             0.0, 1.0, 0.0, 0.0,
             0.0, 0.0, 1.0, 0.0,
             -1.0, 0.0, 0.0, 1.0
         )))
+
+        wheel.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 0, z: -5, duration: 10)))
 
         
         // retrieve the SCNView
@@ -89,7 +91,7 @@ class GameViewController: NSViewController {
             let result = hitResults[0]
             
             if result.node.name == "wheelPart" {
-                result.node.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 0, z: 5, duration: 10)))
+                result.node.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 0, z: -5, duration: 10)))
             }
         }
     }
