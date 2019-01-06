@@ -55,7 +55,7 @@ class GameViewController: NSViewController {
             -1.0, 0.0, 0.0, 1.0
         )))
 
-        rotateAction = SCNAction.rotateBy(x: 0, y: 0, z: -5, duration: Double.random(in: 4...7))
+        rotateAction = SCNAction.rotateBy(x: 0, y: 0, z: -5, duration: Double.random(in: 1...16))
         //wheel.runAction(SCNAction.repeatForever(rotateAction))
         //wheel.runAction(rotateAction)
 
@@ -96,9 +96,10 @@ class GameViewController: NSViewController {
             let result = hitResults[0]
             
             if result.node.name == "wheelPart" {
-                rotateAction.duration = Double.random(in: 4...7)
-                //rotateAction.speed = CGFloat.random(in: 0.5...2.5)
+                rotateAction.duration = Double.random(in: 1...8)
+                //rotateAction.speed = CGFloat.random(in: 4...16)
                 wheel.removeAllActions()
+               // wheel.eulerAngles.z = 0
                 wheel.runAction( rotateAction, forKey: "spin", completionHandler: spinHandler)
 
             }
@@ -110,24 +111,23 @@ class GameViewController: NSViewController {
     
     func spinHandler() {
         wheel.removeAllActions()
-        
         print("The Section is: ", getSectionName())
+        // TODO: show result text on the scene
     }
     
-    // TODO: fix me
     func getSectionName() -> String {
-        var halfSections: [String] = ["PROFIT", "LOSS", "GAIN", "PROFIT", "EXPAND", "WIN", "Capital", "BORROW"]
-        let zAngle = wheel.rotation.z
+        var halfSections: [String] = ["BORROW", "PROFIT", "LOSS", "GAIN", "PROFIT", "EXPAND", "WIN", "CAPITAL"]
+        halfSections += halfSections
         
-        // 22 degree is one section
-        //var section: Int = 0
-        let section = rad2deg(zAngle)
+        let zAngle = wheel.eulerAngles.z
+        let zDegree = Int(zAngle * 180 / .pi)
+        
+        // 22.5 degrees is one sector of the wheel
+        let sectionDegree: Double = -22.5
+        let section = Double(zDegree % 360) / sectionDegree
         debugPrint(section)
         
-        return halfSections[0]
+        return halfSections[Int(section)]
     }
     
-    func rad2deg(_ number: CGFloat) -> CGFloat {
-        return number * 180 / .pi
-    }
 }
