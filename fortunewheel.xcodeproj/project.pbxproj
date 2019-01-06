@@ -12,8 +12,7 @@
 		07999FF421E2154C0054C90E /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 07999FF321E2154C0054C90E /* art.scnassets */; };
 		07999FF621E2154C0054C90E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07999FF521E2154C0054C90E /* Assets.xcassets */; };
 		07999FF921E2154C0054C90E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07999FF721E2154C0054C90E /* Main.storyboard */; };
-		0799A00521E2154C0054C90E /* fortunewheelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799A00421E2154C0054C90E /* fortunewheelTests.swift */; };
-		0799A01021E2154C0054C90E /* fortunewheelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799A00F21E2154C0054C90E /* fortunewheelUITests.swift */; };
+		07DA92D821E23C4F00DD47E0 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07DA92D721E23C4F00DD47E0 /* SceneKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,11 +42,8 @@
 		07999FFA21E2154C0054C90E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07999FFB21E2154C0054C90E /* fortunewheel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = fortunewheel.entitlements; sourceTree = "<group>"; };
 		0799A00021E2154C0054C90E /* fortunewheelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fortunewheelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0799A00421E2154C0054C90E /* fortunewheelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fortunewheelTests.swift; sourceTree = "<group>"; };
-		0799A00621E2154C0054C90E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0799A00B21E2154C0054C90E /* fortunewheelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fortunewheelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0799A00F21E2154C0054C90E /* fortunewheelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fortunewheelUITests.swift; sourceTree = "<group>"; };
-		0799A01121E2154C0054C90E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		07DA92D721E23C4F00DD47E0 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07DA92D821E23C4F00DD47E0 /* SceneKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,9 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				07999FEE21E2154C0054C90E /* fortunewheel */,
-				0799A00321E2154C0054C90E /* fortunewheelTests */,
-				0799A00E21E2154C0054C90E /* fortunewheelUITests */,
 				07999FED21E2154C0054C90E /* Products */,
+				07DA92D621E23C4F00DD47E0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,22 +105,12 @@
 			path = fortunewheel;
 			sourceTree = "<group>";
 		};
-		0799A00321E2154C0054C90E /* fortunewheelTests */ = {
+		07DA92D621E23C4F00DD47E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0799A00421E2154C0054C90E /* fortunewheelTests.swift */,
-				0799A00621E2154C0054C90E /* Info.plist */,
+				07DA92D721E23C4F00DD47E0 /* SceneKit.framework */,
 			);
-			path = fortunewheelTests;
-			sourceTree = "<group>";
-		};
-		0799A00E21E2154C0054C90E /* fortunewheelUITests */ = {
-			isa = PBXGroup;
-			children = (
-				0799A00F21E2154C0054C90E /* fortunewheelUITests.swift */,
-				0799A01121E2154C0054C90E /* Info.plist */,
-			);
-			path = fortunewheelUITests;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,7 +258,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0799A00521E2154C0054C90E /* fortunewheelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +265,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0799A01021E2154C0054C90E /* fortunewheelUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
