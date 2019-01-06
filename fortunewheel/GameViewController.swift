@@ -11,6 +11,9 @@ import QuartzCore
 
 class GameViewController: NSViewController {
     
+    var wheel = SCNNode()
+    var rotateAction = SCNAction()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,7 +45,7 @@ class GameViewController: NSViewController {
         scene.rootNode.addChildNode(ambientLightNode)
         
         // retrieve the ship node
-        let wheel = scene.rootNode.childNode(withName: "wheelPart", recursively: true)!
+        wheel = scene.rootNode.childNode(withName: "wheelPart", recursively: true)!
         
         // flip wheel texture
         wheel.geometry?.material(named: "wheel")?.diffuse.contentsTransform = SCNMatrix4FromGLKMatrix4(GLKMatrix4(m: (
@@ -52,7 +55,8 @@ class GameViewController: NSViewController {
             -1.0, 0.0, 0.0, 1.0
         )))
 
-        wheel.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 0, z: -5, duration: 10)))
+        rotateAction = SCNAction.rotateBy(x: 0, y: 0, z: -5, duration: 5)
+        wheel.runAction(SCNAction.repeatForever(rotateAction))
 
         
         // retrieve the SCNView
@@ -91,7 +95,13 @@ class GameViewController: NSViewController {
             let result = hitResults[0]
             
             if result.node.name == "wheelPart" {
-                result.node.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 0, z: -5, duration: 10)))
+                rotateAction.duration = Double.random(in: 0.5...4.1)
+                wheel.removeAllActions()
+                wheel.runAction(SCNAction.repeatForever(rotateAction))
+
+            }
+            if result.node.name == "arrow" {
+                wheel.removeAllActions()
             }
         }
     }
