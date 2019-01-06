@@ -1,5 +1,5 @@
 language: swift
 osx_image: xcode10.1
 xcode_project: fortunewheel.xcodeproj # path to your xcodeproj folder
-#xcode_scheme: fortunewheelTests
+xcode_scheme: fortunewheel
 xcode_destination: platform=macOS
